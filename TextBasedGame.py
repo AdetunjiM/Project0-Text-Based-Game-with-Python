@@ -23,6 +23,11 @@ class Player:
         return "Name: " + self._name + ", list: " + lst
 
 
+"""class Gamer(Position):
+    def __init__(self,name,location):
+        self.name=name
+        self.location=location"""
+
 """###########************ ROOM POSITION OBJECTS  **************############"""
 
 Front_Door = Position("You are at FRONT-DOOR\nDoors are to your : [NORTH, WEST,EAST]", "FrontDoor")
@@ -74,28 +79,30 @@ Patio.west = Patio
 
 """###########************ STARTING  VARIABLES AND IMPORTS  **************############"""
 
+"""def main():"""
+
 logging.basicConfig(filename="TextBasedGame.log",level=logging.DEBUG,format='%(asctime)s :: %(message)s')
 
 
 """###########************ ROOM DIRECTION METHODS  **************############"""
 
 def gone_north(name):
-    if location!= Kitchen:
-        print("You walked due North")
-        restart = ()
-        if location == Stairs:
-            print(location.description)
-        elif location == Kitchen:
-            print(location.description)
-        elif location == Sitting_Room:
-            print(location.description)
-        elif location == Patio:
-            print(location.description)
-        else:
-            restart = ('y')
-            print("NO EXIT HERE ")
-    else:
+    print("You walked due North")
+    restart = ()
+    if location == Stairs:
+        print(location.description)
+    elif location == Kitchen:
+        print(location.description)
+    elif location == Sitting_Room:
+        print(location.description)
+    elif location == Patio:
+        print(location.description)
+    elif location== Exit:
         print("You won")
+    else:
+        restart = ('y')
+        print("NO EXIT HERE ")
+
 
 
 def gone_south(name):
@@ -162,13 +169,19 @@ while True:
     try:
         player_name = (input("Player1 enter name\n"))
         match= re.match("^[0-9 ]+$", player_name)
+        check = re.search(',', player_name)
         #print(match)
         if match != None:
             raise ValueError
-        else:
-            break
-    except ValueError:
+    except ValueError as ve:
         print("Player name cant be an Integer")
+        print(ve)
+        if check != None:
+            raise ValueError
+    except ValueError as ve:
+        print("Player name can not contain comma")
+    else:
+        break
 
 P1=Player(player_name,lst)
 lst.append(player_name)
@@ -182,7 +195,7 @@ fname="playerDetails.csv"
 location = Front_Door
 
 
-location_coordinates = ["north", "east", "west", "south"]
+location_coordinates = ["north", "east", "west", "south", "quit"]
 location_list_string =",".join(map(str, location_coordinates))
 
 
@@ -195,34 +208,36 @@ def loadplayerDetail(fname):# check if the player exited previously , and get la
             if info[0]== player_name:
                 last_location=info[-1]
                 print("You are loading from file \nYour last location was: ",last_location)
-                location=last_location
-            return location
-            #return location
-            if (last_location =='Stairs'):
-                location=last_location
-                print("I/m here ")
+                print(type(last_location))
+                #location=last_location
                 #return location
-            elif last_location =='SittingRoom':
-                location=Sitting_Room
-                #return location
-            elif last_location == 'Bedroom':
-                location =Bed_room
-                #return location
-            elif last_location =='DiningRoom':
-                location=Dining_Room
-                #return location
-            elif last_location == 'Patio':
-                location =Patio
-                #return location
-            elif last_location == 'Kitchen':
-                location =Kitchen
-                #return location
+                if (last_location=="Stairs"):
+                    location=Stairs
+                    print("I/m here ")
+                    #return location
+                elif last_location =='SittingRoom':
+                    location=Sitting_Room
+                    #return location
+                elif last_location == 'Bedroom':
+                    location =Bed_room
+                    #return location
+                elif last_location =='DiningRoom':
+                    location=Dining_Room
+                    #return location
+                elif last_location == 'Patio':
+                    location =Patio
+                    #return location
+                elif last_location == 'Kitchen':
+                    location =Kitchen
+                    #return location
+                else:
+                    location= Front_Door
+                    print("Game Already completed")
+                    #return location
             else:
-                location= Front_Door
-                print("Game Alread completed")
-                #return location
+                break
 
-        return location
+            return location
 
 
 """#####*****GAME STARTS******#########"""
@@ -240,15 +255,20 @@ while user_input != "quit":
         logging.info(player_name+" WINS")
         break
 
+
     user_input = str(input(player_name+" you are at :" + location.name + " Go where next >>>\n?"))
+    if user_input not in location_coordinates:
+        print("Wrong direction entered \n Enter input in this format : ",location_coordinates)
     logging.info(player_name+ " moved in " +user_input + " direction from " +location.name+" \n")
+
+
     if user_input == 'north':
         locator= location
         location = location.north
         gone_north(location.name)
         if locator==location:
             print("NO EXIT IN NORTH DIRECTION FROM THIS ROOM,PLEASE TAKE ANOTHER EXIT")
-            logging.info(player_name + "tried to move NORTH but no exit in this direction")
+            logging.info(player_name + " tried to move NORTH but no exit in this direction")
 
     elif user_input == 'south':
         locator = location
@@ -256,7 +276,7 @@ while user_input != "quit":
         gone_south(location.name)
         if locator==location:
             print("NO EXIT IN SOUTH DIRECTION FROM THIS ROOM,PLEASE TAKE ANOTHER EXIT")
-            logging.info(player_name + "tried to move SOUTH but no exit in this direction")
+            logging.info(player_name + " tried to move SOUTH but no exit in this direction")
 
     elif user_input == 'east':
         locator = location
@@ -264,7 +284,7 @@ while user_input != "quit":
         gone_east(location.name)
         if locator==location:
             print("NO EXIT IN EAST DIRECTION FROM THIS ROOM,PLEASE TAKE ANOTHER EXIT")
-            logging.info(player_name+"tried to move EAST but no exit in this direction")
+            logging.info(player_name+" tried to move EAST but no exit in this direction")
 
     elif user_input == 'west':
         locator = location
@@ -272,17 +292,18 @@ while user_input != "quit":
         gone_west(location.name)
         if locator==location:
             print("NO EXIT IN WEST DIRECTION FROM THIS ROOM,PLEASE TAKE ANOTHER EXIT")
-            logging.info(player_name + "tried to move WEST but no exit in this direction")
+            logging.info(player_name + " tried to move WEST but no exit in this direction")
 
     elif user_input =='quit':
+        print(player_name," has QUIT")
         logging.info("The user quits the game from the " + location.name + " position")
         break
 
-    else:
+    """else:
         print("Command not recognised")
         print("Please Enter direction in the format: "+location_list_string)
         logging.info(player_name+" entered a location: "+user_input + "which is not part of the 4 coordinated ")
-        print("Your New location is ", location.name)
+        print("Your New location is ", location.name)"""
 
 #print(lst)
 print(player_name," Your Route is as follows ")
@@ -305,5 +326,6 @@ def savePlayerDetail(fname,lst):
 savePlayerDetail(fname, stringList)
 
 
-
+"""if __name__ =="__main__":
+    main()"""
 
