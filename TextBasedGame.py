@@ -161,30 +161,23 @@ def gone_west(name):
 
 """#####*****POSITION METHODS******#########"""
 
+print("WELCOME TO THE ESCAPE ROOM GAME \nYour aim is to locate the Exit \n")
+print("*******GAME STARTS********\n")
 
-print("*******GAME STARTS********")
+#Creating the plaer object
 lst=[]
-
-while True:
+while True :
     try:
-        player_name = (input("Player1 enter name\n"))
-        match= re.match("^[0-9 ]+$", player_name)
-        check = re.search(',', player_name)
-        #print(match)
-        if match != None:
+        P1 = Player(input("Player Enter Yout Name >>>>>>   :  \n"),lst)
+        mat = re.match("^[0-9 ]+$", P1.name)
+        if mat != None:
             raise ValueError
     except ValueError as ve:
         print("Player name cant be an Integer")
-        print(ve)
-        if check != None:
-            raise ValueError
-    except ValueError as ve:
-        print("Player name can not contain comma")
     else:
         break
+lst.append(P1.name)
 
-P1=Player(player_name,lst)
-lst.append(player_name)
 
 fname="playerDetails.csv"
 """def savePlayerDetail(fname,players_History):
@@ -201,65 +194,56 @@ location_list_string =",".join(map(str, location_coordinates))
 
 def loadplayerDetail(fname):# check if the player exited previously , and get last location
     players_History=[]
+
     with open(fname,"r") as f:
         for line in f:
             info =line.split(",")
-            location = ""
-            if info[0]== player_name:
+            if info[0]== P1.name:
                 last_location=info[-1]
-                print("You are loading from file \nYour last location was: ",last_location)
-                print(type(last_location))
-                #location=last_location
-                #return location
+                print("You are loading from file......... \nYour last location was: ",last_location)
                 if (last_location=="Stairs"):
                     location=Stairs
-                    print("I/m here ")
-                    #return location
                 elif last_location =='SittingRoom':
                     location=Sitting_Room
-                    #return location
                 elif last_location == 'Bedroom':
                     location =Bed_room
-                    #return location
                 elif last_location =='DiningRoom':
                     location=Dining_Room
-                    #return location
                 elif last_location == 'Patio':
                     location =Patio
-                    #return location
-                elif last_location == 'Kitchen':
-                    location =Kitchen
-                    #return location
+                elif last_location == "Kitchen":
+                    print("this class kitchen")
+                    location= Kitchen
                 else:
                     location= Front_Door
-                    print("Game Already completed")
-                    #return location
+                    print("Game Already completed\nRestarting Game From Front_Door.....")
             else:
-                break
+                location =Front_Door
 
             return location
 
 
 """#####*****GAME STARTS******#########"""
 
-loadplayerDetail(fname)
+
+location=loadplayerDetail(fname)
 #location=loadplayerDetail(fname)
 user_input = " "
 while user_input != "quit":
     #loadplayerDetail(fname)
     #savePlayerDetail(fname, lst)
-
     lst.append(location.name)
     if location == Exit:
-        print("You have gotten to the Exit")
-        logging.info(player_name+" WINS")
+        print(P1.name,": You have gotten to the Exit in ",len(lst)-2,"moves")
+        logging.info(P1.name+" WINS")
         break
 
-
-    user_input = str(input(player_name+" you are at :" + location.name + " Go where next >>>\n?"))
+    print("Enter input in the format  : ",location_coordinates)
+    general_input = (str(input(P1.name+" you are at :" + location.name + " Go where next >>>\n?")))
+    user_input=general_input.lower()
     if user_input not in location_coordinates:
         print("Wrong direction entered \n Enter input in this format : ",location_coordinates)
-    logging.info(player_name+ " moved in " +user_input + " direction from " +location.name+" \n")
+    logging.info(P1.name+ " moved in " +user_input + " direction from " +location.name+" \n")
 
 
     if user_input == 'north':
@@ -268,7 +252,7 @@ while user_input != "quit":
         gone_north(location.name)
         if locator==location:
             print("NO EXIT IN NORTH DIRECTION FROM THIS ROOM,PLEASE TAKE ANOTHER EXIT")
-            logging.info(player_name + " tried to move NORTH but no exit in this direction")
+            logging.info(P1.name + " tried to move NORTH but no exit in this direction")
 
     elif user_input == 'south':
         locator = location
@@ -276,7 +260,7 @@ while user_input != "quit":
         gone_south(location.name)
         if locator==location:
             print("NO EXIT IN SOUTH DIRECTION FROM THIS ROOM,PLEASE TAKE ANOTHER EXIT")
-            logging.info(player_name + " tried to move SOUTH but no exit in this direction")
+            logging.info(P1.name + " tried to move SOUTH but no exit in this direction")
 
     elif user_input == 'east':
         locator = location
@@ -284,7 +268,7 @@ while user_input != "quit":
         gone_east(location.name)
         if locator==location:
             print("NO EXIT IN EAST DIRECTION FROM THIS ROOM,PLEASE TAKE ANOTHER EXIT")
-            logging.info(player_name+" tried to move EAST but no exit in this direction")
+            logging.info(P1.name+" tried to move EAST but no exit in this direction")
 
     elif user_input == 'west':
         locator = location
@@ -292,10 +276,10 @@ while user_input != "quit":
         gone_west(location.name)
         if locator==location:
             print("NO EXIT IN WEST DIRECTION FROM THIS ROOM,PLEASE TAKE ANOTHER EXIT")
-            logging.info(player_name + " tried to move WEST but no exit in this direction")
+            logging.info(P1.name + " tried to move WEST but no exit in this direction")
 
     elif user_input =='quit':
-        print(player_name," has QUIT")
+        print(P1.name," has QUIT")
         logging.info("The user quits the game from the " + location.name + " position")
         break
 
@@ -306,7 +290,7 @@ while user_input != "quit":
         print("Your New location is ", location.name)"""
 
 #print(lst)
-print(player_name," Your Route is as follows ")
+print(P1.name," Your Route is as follows ")
 for i in range(1,len(lst)):
     print(lst[i])
 
@@ -319,8 +303,9 @@ def savePlayerDetail(fname,lst):
     with open(fname,"a") as f :
         #for elem in lst:
         """f.write("Player Name: "+P1.name+"Last Location: "+location.name)"""
-        f.write(stringList)
+        f.write(lst)
         f.write("\n")
+        print("Your Route has been saved to file ")
         logging.info("Saving Player Details to file...")
 
 savePlayerDetail(fname, stringList)
