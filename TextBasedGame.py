@@ -194,11 +194,11 @@ location_list_string =",".join(map(str, location_coordinates))
 
 def loadplayerDetail(fname):# check if the player exited previously , and get last location
     players_History=[]
-
     with open(fname,"r") as f:
         for line in f:
             info =line.split(",")
-            if info[0]== P1.name:
+            location=Front_Door
+            if info[0] == P1.name:
                 last_location=info[-1]
                 print("You are loading from file......... \nYour last location was: ",last_location)
                 if (last_location=="Stairs"):
@@ -219,14 +219,14 @@ def loadplayerDetail(fname):# check if the player exited previously , and get la
                     print("Game Already completed\nRestarting Game From Front_Door.....")
             else:
                 location =Front_Door
+                break
 
             return location
 
 
 """#####*****GAME STARTS******#########"""
 
-
-location=loadplayerDetail(fname)
+loadplayerDetail(fname)
 #location=loadplayerDetail(fname)
 user_input = " "
 while user_input != "quit":
