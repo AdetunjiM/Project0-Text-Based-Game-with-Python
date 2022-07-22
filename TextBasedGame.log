@@ -58,3 +58,112 @@
 
 2022-07-21 20:42:34,831 :: ademola WINS
 2022-07-21 20:42:34,831 :: Saving Player Details to file...
+2022-07-22 08:58:55,776 :: ADE moved in north direction from FrontDoor 
+
+2022-07-22 08:58:59,759 :: ADE moved in west direction from Stairs 
+
+2022-07-22 08:59:05,359 :: ADE moved in south direction from SittingRoom 
+
+2022-07-22 08:59:54,940 :: ADE moved in north direction from Bed_room 
+
+2022-07-22 08:59:57,610 :: ADE moved in north direction from SittingRoom 
+
+2022-07-22 09:00:05,611 :: ADE moved in north direction from Patio 
+
+2022-07-22 09:00:05,611 :: ADE tried to move NORTH but no exit in this direction
+2022-07-22 09:00:15,872 :: ADE moved in west direction from Patio 
+
+2022-07-22 09:00:15,873 :: ADE tried to move WEST but no exit in this direction
+2022-07-22 09:02:16,110 :: WEST moved in north direction from FrontDoor 
+
+2022-07-22 09:02:18,179 :: WEST moved in north direction from Stairs 
+
+2022-07-22 09:02:18,179 :: WEST tried to move NORTH but no exit in this direction
+2022-07-22 09:02:19,790 :: WEST moved in north direction from Stairs 
+
+2022-07-22 09:02:19,790 :: WEST tried to move NORTH but no exit in this direction
+2022-07-22 09:02:23,741 :: WEST moved in west direction from Stairs 
+
+2022-07-22 09:02:25,932 :: WEST moved in north direction from SittingRoom 
+
+2022-07-22 09:02:27,446 :: WEST moved in noth direction from Patio 
+
+2022-07-22 09:02:29,218 :: WEST moved in north direction from Patio 
+
+2022-07-22 09:02:29,218 :: WEST tried to move NORTH but no exit in this direction
+2022-07-22 09:05:53,480 :: IFE moved in north direction from FrontDoor 
+
+2022-07-22 09:05:55,595 :: IFE moved in north direction from Stairs 
+
+2022-07-22 09:05:55,595 :: IFE tried to move NORTH but no exit in this direction
+2022-07-22 09:06:01,808 :: IFE moved in south direction from Stairs 
+
+2022-07-22 09:08:08,659 :: IFE  moved in north direction from FrontDoor 
+
+2022-07-22 09:08:13,956 :: IFE  moved in south direction from Stairs 
+
+2022-07-22 09:08:17,308 :: IFE  moved in south direction from FrontDoor 
+
+2022-07-22 09:08:17,309 :: IFE  tried to move SOUTH but no exit in this direction
+2022-07-22 09:08:26,925 :: IFE  moved in west direction from FrontDoor 
+
+2022-07-22 09:08:30,370 :: IFE  moved in west direction from Bed_room 
+
+2022-07-22 09:08:30,370 :: IFE  tried to move WEST but no exit in this direction
+2022-07-22 09:08:34,523 :: IFE  moved in south direction from Bed_room 
+
+2022-07-22 09:08:34,523 :: IFE  tried to move SOUTH but no exit in this direction
+2022-07-22 09:08:40,654 :: IFE  moved in north direction from Bed_room 
+
+2022-07-22 09:08:43,204 :: IFE  moved in south direction from SittingRoom 
+
+2022-07-22 09:08:46,980 :: IFE  moved in east direction from Bed_room 
+
+2022-07-22 09:08:51,512 :: IFE  moved in west direction from FrontDoor 
+
+2022-07-22 09:08:53,206 :: IFE  moved in north direction from Bed_room 
+
+2022-07-22 09:08:57,647 :: IFE  moved in south direction from SittingRoom 
+
+2022-07-22 09:09:03,060 :: IFE  moved in north direction from Bed_room 
+
+2022-07-22 09:09:04,711 :: IFE  moved in east direction from SittingRoom 
+
+2022-07-22 09:09:08,956 :: IFE  moved in west direction from Stairs 
+
+2022-07-22 09:09:10,611 :: IFE  moved in west direction from SittingRoom 
+
+2022-07-22 09:09:10,611 :: IFE  tried to move WEST but no exit in this direction
+2022-07-22 09:09:14,328 :: IFE  moved in north direction from SittingRoom 
+
+2022-07-22 09:09:17,277 :: IFE  moved in north direction from Patio 
+
+2022-07-22 09:09:17,277 :: IFE  tried to move NORTH but no exit in this direction
+2022-07-22 09:09:33,023 :: IFE  moved in south direction from Patio 
+
+2022-07-22 09:09:34,777 :: IFE  moved in east direction from SittingRoom 
+
+2022-07-22 09:09:36,559 :: IFE  moved in north direction from Stairs 
+
+2022-07-22 09:09:36,559 :: IFE  tried to move NORTH but no exit in this direction
+2022-07-22 09:09:39,345 :: IFE  moved in east direction from Stairs 
+
+2022-07-22 09:09:45,127 :: IFE  moved in easf direction from Kitchen 
+
+2022-07-22 09:09:47,016 :: IFE  moved in east direction from Kitchen 
+
+2022-07-22 09:09:47,016 :: IFE  tried to move EAST but no exit in this direction
+2022-07-22 09:09:53,920 :: IFE  moved in south direction from Kitchen 
+
+2022-07-22 09:09:57,437 :: IFE  moved in north direction from DiningRoom 
+
+2022-07-22 09:10:00,137 :: IFE  moved in east direction from Kitchen 
+
+2022-07-22 09:10:00,137 :: IFE  tried to move EAST but no exit in this direction
+2022-07-22 09:10:02,302 :: IFE  moved in east direction from Kitchen 
+
+2022-07-22 09:10:02,302 :: IFE  tried to move EAST but no exit in this direction
+2022-07-22 09:10:05,137 :: IFE  moved in north direction from Kitchen 
+
+2022-07-22 09:10:05,137 :: IFE  WINS
+2022-07-22 09:10:05,137 :: Saving Player Details to file...

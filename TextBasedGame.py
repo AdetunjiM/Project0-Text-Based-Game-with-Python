@@ -62,7 +62,7 @@ Kitchen.east = Kitchen
 Kitchen.west = Stairs
 
 Stairs.north = Stairs
-Stairs.south = Dining_Room
+Stairs.south = Front_Door
 Stairs.east = Kitchen
 Stairs.west = Sitting_Room
 
@@ -110,8 +110,6 @@ def gone_south(name):
     restart = ()
     if location == Dining_Room:
         print(location.description)
-    elif location == Kitchen:
-        print(location.description)
     elif location == Front_Door:
         print(location.description)
     elif location == Bed_room:
@@ -130,13 +128,9 @@ def gone_east(name):
         print(location.description)
     elif location == Front_Door:
         print(location.description)
-    elif location == Bed_room:
-        print(location.description)
     elif location == Kitchen:
         print(location.description)
     elif location == Stairs:
-        print(location.description)
-    elif location == Exit:
         print(location.description)
     else:
         restart = ('y')
